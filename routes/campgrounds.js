@@ -45,7 +45,7 @@ router.post("/", middleware.isLoggedin, upload.single("image"), function (
 ) {
     cloudinary.uploader.upload(req.file.path, function (error, result) {
         if (error) {
-            req.flash("error", err.message);
+            req.flash("error", error.message);
             return res.redirect("back");
         }
 
